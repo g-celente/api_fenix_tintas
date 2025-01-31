@@ -1,0 +1,23 @@
+{
+  "name": "api_chatbot_fenix",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/api.js",
+    "vercel-build": "npx prisma migrate deploy",
+    "migrate": "npx prisma migrate dev",
+    "postinstall": "npx prisma generate",
+    "generate": "npx prisma generate",
+    "studio": "npx prisma studio"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
