@@ -1,12 +1,13 @@
-import { Router } from "express";
+// src/routes/apiRoutes.js
+import express from 'express';
 
-const router = Router();
+const apiRouter = express.Router();
 
+// Rota da API para obter o status do WhatsApp
+apiRouter.get('', (req, res) => {
+    return res.json({ ok: true})
+});
 
-router.get('', (req, res) => {
-    return res.json( {ok: true} )
-})
+// Rota para enviar uma mensagem
 
-
-
-export default router;
+export default apiRouter;

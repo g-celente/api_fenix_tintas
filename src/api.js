@@ -1,38 +1,26 @@
-import express from "express";
-import cors from "cors";
-import apiRoutes from "./routes/apiRoutes.js"
-import { Client } from "whatsapp-web.js"
-import qrcode from "qrcode-terminal"
-
-const client = new Client();
-const delay = ms => new Promise(res => setTimeout(res, ms))
-
-client.on('qr', qr => {
-    qrcode.generate(qr, { small:true })
-})
-
-client.on('ready', () => {
-    console.log('Tudo certo! WhatsApp conectado.');
-});
-
-client.initialize();
-
-client.on('message', async msg => {
-    if (msg.body.match(/menu/i)) {
-        await client.sendMessage(msg.from, 'Olá')
-    }
-})
-
+// src/server.js
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url'; // Para obter __dirname com ESM
+import { dirname } from 'path'; // Para obter __dirname com ESM
+import chatbotRoutes from './routes/chatbotRoutes.js';
+import apiRoutes from './routes/apiRoutes.js';
 
 const app = express();
 
-app.use(cors());
+// Configurar o Express para usar EJS
+const __filename = fileURLToPath(import.meta.url); // Obtém o caminho do arquivo atual
+const __dirname = dirname(__filename); // Obtém o diretório onde o arquivo está localizado
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views')); // Usar __dirname para configurar o caminho das views
 
+// Middleware para express.json() para poder ler o corpo da requisição em JSON
 app.use(express.json());
 
-app.use('/api', apiRoutes)
+// Usando as rotas para chatbot e API
+app.use('/', chatbotRoutes); // Rota para chatbot (QR Code, etc)
+app.use('/api', apiRoutes);  // Rota para a API (status, enviar mensagem, etc)
 
 app.listen(3000, () => {
-    console.log('Servidor Rodando em http://localhost:3000')
-})
-
+    console.log('Servidor rodando em http://localhost:3000');
+});
