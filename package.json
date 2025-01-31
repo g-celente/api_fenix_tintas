@@ -6,9 +6,9 @@
     "dev": "node --watch src/api.js",
     "vercel-build": "npx prisma migrate deploy",
     "migrate": "npx prisma migrate dev",
-    "postinstall": "npx prisma generate",
+    "postinstall": "npx prisma generate && npm install puppeteer && npm install chrome-aws-lambda",
     "generate": "npx prisma generate",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio" 
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
   "type": "module",
   "dependencies": {
     "@prisma/client": "^6.3.0",
+    "chrome-aws-lambda": "^10.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "ejs": "^3.1.10",
