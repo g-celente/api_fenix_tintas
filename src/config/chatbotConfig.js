@@ -6,7 +6,7 @@ import puppeteer from 'puppeteer-core';
 const client = new Client({
     puppeteer: {
         args: chrome.args,
-        executablePath: process.env.CHROME_EXECUTABLE_PATH || chrome.executablePath,
+        executablePath: chrome.executablePath,
         headless: chrome.headless,
     }
 });
