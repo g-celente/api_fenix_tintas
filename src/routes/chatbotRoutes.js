@@ -1,10 +1,9 @@
 // src/routes/chatbotRoutes.js
 import express from 'express';
 import qrcode from 'qrcode';
-import { clientPromisse } from "../config/chatbotConfig.js";
+import client from "../config/chatbotConfig.js";
 import { processMessages } from "../controllers/chatbotController.js";
 
-const client = await clientPromisse
 const chatRouter = express.Router();
 
 // Rota que renderiza o HTML com o QR code

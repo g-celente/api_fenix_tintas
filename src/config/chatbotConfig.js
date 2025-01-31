@@ -1,8 +1,8 @@
 // src/config/chatbotConfig.js
 import { Client } from 'whatsapp-web.js';
-import chrome from 'chrome-aws-lambda';
-import puppeteer from 'puppeteer-core';
-
+//import chrome from 'chrome-aws-lambda';
+//import puppeteer from 'puppeteer-core';
+/*
 async function initializeClient() {
     // Aguarde a resolução do caminho do Chromium
     const executablePath = await chrome.executablePath;
@@ -23,10 +23,15 @@ async function initializeClient() {
     await client.initialize(); // Espera a inicialização ser concluída antes de prosseguir
 
     return client;
-}
+}*/
 
-initializeClient().catch(error => {
-    console.error('Erro ao inicializar o cliente:', error);
+const client = new Client();
+
+client.on('ready', () => {
+    console.log('WhatsApp conectado!');
 });
 
-export default initializeClient;
+client.initialize()
+
+
+export default client;
