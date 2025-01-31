@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url'; // Para obter __dirname com ESM
 import { dirname } from 'path'; // Para obter __dirname com ESM
 import chatbotRoutes from './routes/chatbotRoutes.js';
 import apiRoutes from './routes/apiRoutes.js';
+import dotenv from "dotenv"
 
+dotenv.config()
 
 const app = express();
 
