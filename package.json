@@ -4,11 +4,12 @@
   "main": "index.js",
   "scripts": {
     "dev": "node --watch src/api.js",
-    "vercel-build": "npx prisma migrate deploy",
     "migrate": "npx prisma migrate dev",
     "postinstall": "npx prisma generate && npm install puppeteer && npm install chrome-aws-lambda",
     "generate": "npx prisma generate",
-    "studio": "npx prisma studio" 
+    "studio": "npx prisma studio",
+    "build": "tsup src",
+    "start": "node src/api.js"
   },
   "keywords": [],
   "author": "",
