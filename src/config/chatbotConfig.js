@@ -3,19 +3,30 @@ import { Client } from 'whatsapp-web.js';
 import chrome from 'chrome-aws-lambda';
 import puppeteer from 'puppeteer-core';
 
-const client = new Client({
-    puppeteer: {
-        args: chrome.args,
-        executablePath: chrome.executablePath,
-        headless: chrome.headless,
-    }
+async function initializeClient() {
+    // Aguarde a resolução do caminho do Chromium
+    const executablePath = await chrome.executablePath;
+
+    const client = new Client({
+        puppeteer: {
+            args: chrome.args,
+            executablePath, // Caminho resolvido
+            headless: chrome.headless,
+        }
+    });
+
+    client.on('ready', () => {
+        console.log('WhatsApp conectado!');
+    });
+
+    // Inicialize o cliente
+    await client.initialize(); // Espera a inicialização ser concluída antes de prosseguir
+
+    return client;
+}
+
+initializeClient().catch(error => {
+    console.error('Erro ao inicializar o cliente:', error);
 });
 
-client.on('ready', () => {
-    console.log('WhatsApp conectado!');
-});
-
-// Inicialize o cliente, mas sem assinar eventos diretamente aqui
-client.initialize();
-
-export default client;
+export default initializeClient;

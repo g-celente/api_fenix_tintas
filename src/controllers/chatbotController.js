@@ -1,6 +1,7 @@
 // src/controllers/chatbotController.js
-import client from "../config/chatbotConfig.js";
+import { clientPromisse } from "../config/chatbotConfig.js";
 
+const client = await clientPromisse
 // Função para processar a mensagem quando o client estiver pronto
 export const processMessages = () => {
     client.on('message', async (msg) => {
