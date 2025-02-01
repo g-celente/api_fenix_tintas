@@ -1,6 +1,6 @@
 // src/routes/apiRoutes.js
 import express from 'express';
-import authController from "../controllers/authController.js"
+import authController from "../controllers/auth/authController.js"
 
 const apiRouter = express.Router();
 
@@ -10,6 +10,8 @@ apiRouter.get('', (req, res) => {
 });
 
 apiRouter.post('/login', authController.signIn)
+
+apiRouter.post('/register', authController.signUp)
 
 // Rota para enviar uma mensagem
 
