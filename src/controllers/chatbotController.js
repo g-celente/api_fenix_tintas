@@ -1,6 +1,6 @@
 // src/controllers/chatbotController.js
 import client from "../config/chatbotConfig.js";
-import chatBotModel from "../models/chatBotModel.js"
+import chatBotModel from "../models/chatbotModel.js"
 
 // Armazena o estado de cada usuário
 let userStates = {}; 

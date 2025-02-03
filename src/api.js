@@ -7,7 +7,7 @@ import chatbotRoutes from './routes/chatbotRoutes.js';
 import apiRoutes from './routes/apiRoutes.js';
 import dotenv from "dotenv"
 import cors from "cors"
-import prisma from './models/prisma.js';
+
 
 dotenv.config()
 
