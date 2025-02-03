@@ -7,7 +7,7 @@ const authModel = {
     signIn: async (data) => {
 
         try {
-            const user = await prisma.login.findFirst({
+            const user = await prisma.user.findFirst({
                 where: {
                     email: data.email
                 }
@@ -34,7 +34,7 @@ const authModel = {
 
         try {
 
-            const newUser = await prisma.login.create({
+            const newUser = await prisma.user.create({
                 data: {
                     name: data.name,
                     email: data.email,

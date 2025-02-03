@@ -18,3 +18,5 @@ async function verifyToken (req, res, next) {
         next()
     })
 }
+
+export default verifyToken
